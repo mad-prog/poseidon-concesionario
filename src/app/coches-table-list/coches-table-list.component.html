@@ -14,16 +14,22 @@
             <th></th>
         </thead>
         <ng-container *ngFor="let coche of coches">
-            <tr *ngIf="coche.vendido === false">                
+            <tr *ngIf="coche.vendido === false">
                 <td>{{coche.id}}</td>
                 <td>{{coche.marca}}</td>
                 <td>{{coche.modelo}}</td>
                 <td>{{coche.puertas}}</td>
                 <td>{{coche.tipoDeCoche}}</td>
                 <td>{{coche.potencia}}</td>
-                <td>{{coche.oferta}}</td>
+                <td>{{coche.potencia}}</td>
+
+                <td [ngSwitch]="coche.oferta">
+                    <span *ngSwitchCase="true">Si</span>
+                    <span *ngSwitchCase="false">No</span>
+                </td>
+               
                 <td>{{coche.visible}}</td>
-                <td>{{coche.vendido}}</td>            
+                <td>{{coche.vendido}}</td>
                 <td><button *ngIf="coche.vendido === false ;else templateName" (click)="infoClick(coche)">Mostrar Info</button></td>
             </tr>
         </ng-container>
