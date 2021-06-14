@@ -1,48 +1,44 @@
-<p>coches-table-list works!</p>
-<ng-container>
+<div class="container">
+
     <table>
         <thead>
-            <th>Id</th>
+            <th>Pos.</th>
             <th>Marca</th>
             <th>Modelo</th>
             <th>Puertas</th>
             <th>Tipo de Coche</th>
             <th>Potencia</th>
-            <th>En oferta</th>
-            <th>Es Visible</th>
-            <th>Está vendido</th>
+            <th class="center">En oferta</th>
+            <th class="center">Es Visible</th>
+            <th class="center">Está vendido</th>
             <th></th>
         </thead>
-        <ng-container *ngFor="let coche of coches">
-            <tr *ngIf="coche.vendido === false">
-                <td>{{coche.id}}</td>
+        <ng-container *ngFor="let coche of coches; let idx = index;">
+            <tr [ngClass]="{'en-oferta': coche.oferta}" >
+                <td>{{idx + 1}}</td>
                 <td [style.color]="coche.color">{{coche.marca}}</td>
                 <td [ngStyle]="{color: coche.color ? coche.color: 'white'}">{{coche.modelo}}</td>
-                <td>{{coche.puertas}}</td>
+                <td class="right">{{coche.puertas}}</td>
                 <td>{{coche.tipoDeCoche}}</td>
-                <td>{{coche.potencia}}</td>
+                <td class="right">{{coche.potencia}}</td>
 
-                <td [ngSwitch]="coche.oferta">
+                <td [ngSwitch]="coche.oferta" class="center" >
                     <span *ngSwitchCase="true">Si</span>
                     <span *ngSwitchCase="false">No</span>
                 </td>
-                <td>
+                <td class="center">
                     <app-switch-si-no [valor]="coche.visible"></app-switch-si-no>
                 </td>
-                <td>
+                <td class="center">
                     <app-switch-si-no [valor]="coche.vendido"></app-switch-si-no>
                 </td>
 
-                <td><button *ngIf="coche.vendido === false ;else templateName" (click)="infoClick(coche)">Mostrar Info</button></td>
+                <td><button *ngIf="coche.vendido === false" (click)="infoClick(coche)">Mostrar Info</button></td>
             </tr>
         </ng-container>
     </table>
-</ng-container>
-<div>
-    <span>
-
-    </span>
 </div>
+
 <ng-template #templateName>
     <h1>
         Dentro de un ng-template
