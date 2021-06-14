@@ -1,0 +1,27 @@
+<p>coches-table-list works!</p>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Puertas</th>
+        <th>Tipo de Coche</th>
+        <th>Potencia</th>
+        <th>En oferta</th>
+        <th>Es Visible</th>
+        <th>Está vendido</th>
+        <th></th>
+    </thead>
+    <tr *ngFor="let coche of coches">
+        <td>{{coche.id}}</td>
+        <td>{{coche.marca}}</td>
+        <td>{{coche.modelo}}</td>
+        <td>{{coche.puertas}}</td>
+        <td>{{coche.tipoDeCoche}}</td>
+        <td>{{coche.potencia}}</td>
+        <td>{{coche.oferta}}</td>
+        <td>{{coche.visible}}</td>
+        <td>{{coche.vendido}}</td>
+        <td><button (click)="infoClick(coche)" >Mostrar Info</button></td>
+    </tr>
+</table>

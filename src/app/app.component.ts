@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Coche } from './models/coche';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'concesionario';
+
+  showCoche(coche: Coche): void {
+    console.log(coche);
+    alert(coche.marca);
+  }
 }
