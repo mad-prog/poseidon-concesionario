@@ -27,9 +27,13 @@
                     <span *ngSwitchCase="true">Si</span>
                     <span *ngSwitchCase="false">No</span>
                 </td>
-               
-                <td>{{coche.visible}}</td>
-                <td>{{coche.vendido}}</td>
+                <td>
+                    <app-switch-si-no [valor]="coche.visible"></app-switch-si-no>
+                </td>
+                <td>
+                    <app-switch-si-no [valor]="coche.vendido"></app-switch-si-no>
+                </td>
+                
                 <td><button *ngIf="coche.vendido === false ;else templateName" (click)="infoClick(coche)">Mostrar Info</button></td>
             </tr>
         </ng-container>

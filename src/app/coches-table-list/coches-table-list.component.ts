@@ -90,8 +90,8 @@ export class CochesTableListComponent implements OnInit {
       modelo: "CLS",
       puertas: 3,
       tipoDeCoche: "Coupe",
-      potencia: 260,
-      oferta: true
+      potencia: 260,      
+      vendido: false
     })
 
   }
