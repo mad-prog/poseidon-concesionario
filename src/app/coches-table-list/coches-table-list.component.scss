@@ -19,7 +19,7 @@ table {
         &:hover {
             background-color: beige;
             cursor: pointer;
-        }       
+        }
     }
 
     td {
@@ -48,4 +48,12 @@ table {
         color: rgb(98, 16, 16);
         font-weight: bold;
     }
+}
+
+.fa-lock-open {
+    color: green;
+}
+
+.fa-lock {
+    color: red;
 }

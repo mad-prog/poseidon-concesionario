@@ -1,5 +1,4 @@
 <div class="container">
-
     <table>
         <thead>
             <th>Pos.</th>
@@ -10,37 +9,28 @@
             <th>Potencia</th>
             <th class="center">En oferta</th>
             <th class="center">Es Visible</th>
-            <th class="center">Está vendido</th>
+            <th class="center">Disponible</th>
             <th></th>
         </thead>
         <ng-container *ngFor="let coche of coches; let idx = index;">
-            <tr [ngClass]="{'en-oferta': coche.oferta}" >
+            <tr [ngClass]="{'en-oferta': coche.oferta}">
                 <td>{{idx + 1}}</td>
                 <td [style.color]="coche.color">{{coche.marca}}</td>
                 <td [ngStyle]="{color: coche.color ? coche.color: 'white'}">{{coche.modelo}}</td>
                 <td class="right">{{coche.puertas}}</td>
                 <td>{{coche.tipoDeCoche}}</td>
                 <td class="right">{{coche.potencia}}</td>
-
-                <td [ngSwitch]="coche.oferta" class="center" >
-                    <span *ngSwitchCase="true">Si</span>
-                    <span *ngSwitchCase="false">No</span>
+                <td class="center">
+                    <app-switch-si-no [valor]="coche.oferta"></app-switch-si-no>
                 </td>
                 <td class="center">
                     <app-switch-si-no [valor]="coche.visible"></app-switch-si-no>
                 </td>
                 <td class="center">
-                    <app-switch-si-no [valor]="coche.vendido"></app-switch-si-no>
+                    <i class="fas" [ngClass]="coche.vendido ? 'fa-lock' : 'fa-lock-open'"></i>
                 </td>
-
                 <td><button *ngIf="coche.vendido === false" (click)="infoClick(coche)">Mostrar Info</button></td>
             </tr>
         </ng-container>
     </table>
 </div>
-
-<ng-template #templateName>
-    <h1>
-        Dentro de un ng-template
-    </h1>
-</ng-template>
