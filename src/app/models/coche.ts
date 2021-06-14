@@ -5,6 +5,7 @@ export interface Coche {
     puertas: number;
     tipoDeCoche: string;
     potencia: number;
+    color: string;
     oferta?: boolean;
     visible?: boolean;
     vendido?: boolean;

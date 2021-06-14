@@ -25,7 +25,8 @@ export class CochesTableListComponent implements OnInit {
         potencia: 260,
         oferta: true,
         visible: true,
-        vendido: false
+        vendido: false,
+        color: 'red'
       },
       {
         id: id++,
@@ -36,7 +37,8 @@ export class CochesTableListComponent implements OnInit {
         potencia: 250,
         oferta: true,
         visible: true,
-        vendido: true
+        vendido: true,
+        color: 'blue'
       },
       {
         id: id++,
@@ -47,7 +49,8 @@ export class CochesTableListComponent implements OnInit {
         potencia: 250,
         oferta: true,
         visible: true,
-        vendido: false
+        vendido: false,
+        color: 'green'
       },
       {
         id: id++,
@@ -58,7 +61,8 @@ export class CochesTableListComponent implements OnInit {
         potencia: 150,
         oferta: true,
         visible: true,
-        vendido: false
+        vendido: false,
+        color: 'yellow'
       },
       {
         id: id++,
@@ -69,7 +73,8 @@ export class CochesTableListComponent implements OnInit {
         potencia: 258,
         oferta: true,
         visible: true,
-        vendido: false
+        vendido: false,
+        color: 'violet'
       },
       {
         id: id++,
@@ -80,7 +85,8 @@ export class CochesTableListComponent implements OnInit {
         potencia: 385,
         oferta: false,
         visible: true,
-        vendido: true
+        vendido: true,
+        color: 'grey'
       }
     ];
 
@@ -90,8 +96,9 @@ export class CochesTableListComponent implements OnInit {
       modelo: "CLS",
       puertas: 3,
       tipoDeCoche: "Coupe",
-      potencia: 260,      
-      vendido: false
+      potencia: 260,
+      vendido: false,
+      color: 'orange'
     })
 
   }
