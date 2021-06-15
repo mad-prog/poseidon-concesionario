@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
 
   mostrarTarjetas = true;
   coches: Coche[] = [];
+  cochesBackup: Coche[] = [];
 
   ngOnInit(): void {
 
@@ -100,10 +101,11 @@ export class AppComponent implements OnInit {
       vendido: false,
       color: 'orange'
     })
+
+    this.cochesBackup = [...this.coches];
   }
 
   showCoche(coche: Coche): void {
-    console.log(coche);
     alert(coche.marca);
   }
 
@@ -133,8 +135,8 @@ export class AppComponent implements OnInit {
     // findIndex
 
     const fIndex = this.coches.findIndex(coche => coche.id === cocheId);
-    if (fIndex >= 0){
-        this.coches[fIndex].vendido = true;
+    if (fIndex >= 0) {
+      this.coches[fIndex].vendido = true;
     }
 
     // map
@@ -151,5 +153,17 @@ export class AppComponent implements OnInit {
     //   }
     // })
 
+  }
+
+  filtrarSoloDisponibles() {
+    this.coches = this.cochesBackup.filter(x => x.vendido === false);
+  }
+
+  filtrarSoloEnOferta() {
+    this.coches = this.cochesBackup.filter(x => x.oferta);
+  }
+
+  mostrarTodos() {
+    this.coches = [...this.cochesBackup];
   }
 }

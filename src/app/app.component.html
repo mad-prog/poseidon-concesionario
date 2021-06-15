@@ -1,4 +1,7 @@
-<button (click)="cambiarVistaClick()" >Cambiar vista</button>
+<app-coches-filter (soloDisponibles)="filtrarSoloDisponibles()" (soloEnOferta)="filtrarSoloEnOferta()" (todos)="mostrarTodos()">
+</app-coches-filter>
+
+<button (click)="cambiarVistaClick()">Cambiar vista</button>
 
 <app-coches-card-list [coches]="coches" (vender)="vender($event)" *ngIf="mostrarTarjetas; else mostrarGrid"></app-coches-card-list>
 

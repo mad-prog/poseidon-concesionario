@@ -6,6 +6,7 @@ import { CochesTableListComponent } from './coches-table-list/coches-table-list.
 import { SwitchSiNoComponent } from './switch-si-no/switch-si-no.component';
 import { CochesCardListComponent } from './coches-card-list/coches-card-list.component';
 import { CochesListComponent } from './coches-list/coches-list.component';
+import { CochesFilterComponent } from './coches-filter/coches-filter.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { CochesListComponent } from './coches-list/coches-list.component';
     CochesTableListComponent,
     SwitchSiNoComponent,
     CochesCardListComponent,
-    CochesListComponent
+    CochesListComponent,
+    CochesFilterComponent
   ],
   imports: [
     BrowserModule
