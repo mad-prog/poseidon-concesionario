@@ -166,4 +166,22 @@ export class AppComponent implements OnInit {
   mostrarTodos() {
     this.coches = [...this.cochesBackup];
   }
+
+  soldOut() {
+    // this.coches = [...this.cochesBackup];
+
+    // this.coches.forEach(x => x.vendido = true);
+
+    this.coches = this.cochesBackup.map(oldCoche => {
+      const newCoche = { ...oldCoche, vendido: true };
+      return newCoche;
+    })
+
+    // this.coches = this.cochesBackup.map(oldCoche => ({ ...oldCoche, vendido: true }));
+
+  }
+
+  reset() {
+    this.coches = [...this.cochesBackup];
+  }
 }

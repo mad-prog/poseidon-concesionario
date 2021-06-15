@@ -1,7 +1,12 @@
 <app-coches-filter (soloDisponibles)="filtrarSoloDisponibles()" (soloEnOferta)="filtrarSoloEnOferta()" (todos)="mostrarTodos()">
 </app-coches-filter>
 
-<button (click)="cambiarVistaClick()">Cambiar vista</button>
+<div class="button-actions">
+    <button (click)="cambiarVistaClick()">Cambiar vista</button>
+    <button (click)="soldOut()">Sold out</button>
+    <button (click)="reset()">Restablecer</button>
+</div>
+
 
 <app-coches-card-list [coches]="coches" (vender)="vender($event)" *ngIf="mostrarTarjetas; else mostrarGrid"></app-coches-card-list>
 
