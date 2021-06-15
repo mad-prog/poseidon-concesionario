@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>
+        Listado de Coches (Tarjetas)
+    </h1>
+    <div class="card" *ngFor="let coche of coches">
+        <div class="card-header">
+            {{ coche.marca}} - {{coche.modelo}}
+        </div>
+        <div class="card-content">
+            <p><strong>Numero de puertas:</strong>{{coche.puertas}}</p>
+            <p><strong>Potencia:</strong>{{coche.potencia}}</p>
+            <p><strong>Tipo de coche:</strong>{{coche.tipoDeCoche}}</p>
+        </div>
+    </div>
+</div>
