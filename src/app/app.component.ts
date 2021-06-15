@@ -118,6 +118,38 @@ export class AppComponent implements OnInit {
   }
 
   vender(cocheId: string | number | null): void {
-    
+    //// filter
+    // const rFilter = this.coches.filter(coche => coche.id === cocheId);
+    // if (rFilter?.length) {
+    //   rFilter[0].vendido = true;
+    // }
+
+    // // find
+    // const rFind = this.coches.find(coche => coche.id === cocheId);
+    // if (rFind) {
+    //   rFind.vendido = true;
+    // }
+
+    // findIndex
+
+    const fIndex = this.coches.findIndex(coche => coche.id === cocheId);
+    if (fIndex >= 0){
+        this.coches[fIndex].vendido = true;
+    }
+
+    // map
+    // this.coches.map(coche => {
+    //    if (coche.id === cocheId){
+    //      coche.vendido = true;
+    //    }  
+    // });
+
+    //  //forEach
+    //  this.coches.forEach(coche => {
+    //   if (coche.id === cocheId){
+    //     coche.vendido = true;
+    //   }
+    // })
+
   }
 }

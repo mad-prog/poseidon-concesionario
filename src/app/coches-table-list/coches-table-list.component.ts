@@ -21,6 +21,7 @@ export class CochesTableListComponent implements OnInit {
 
   infoClick(infoCoche: Coche): void {
     this.show.emit(infoCoche);
+    infoCoche.marca = 'SEAT';
   }
 
   venderCoche(coche: Coche): void {

@@ -1,7 +1,10 @@
-<button (click)="cambiarVistaClick()" >Cambiar vista</button>
+<!-- <button (click)="cambiarVistaClick()" >Cambiar vista</button>
 
 <app-coches-card-list [coches]="coches" (vender)="vender($event)" *ngIf="mostrarTarjetas; else mostrarGrid"></app-coches-card-list>
 
 <ng-template #mostrarGrid>
     <app-coches-table-list [coches]="coches" (vender)="vender($event)" (show)="showCoche($event)"></app-coches-table-list>
-</ng-template>
+</ng-template> -->
+
+<app-coches-card-list [coches]="coches" (vender)="vender($event)" ></app-coches-card-list>
+<app-coches-table-list [coches]="coches" (vender)="vender($event)" (show)="showCoche($event)"></app-coches-table-list>
