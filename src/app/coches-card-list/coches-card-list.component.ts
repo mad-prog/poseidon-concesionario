@@ -9,7 +9,7 @@ import { Coche } from '../models/coche';
 export class CochesCardListComponent implements OnInit {
 
   @Input() coches: Coche[] = [];
-  @Output() vender = new EventEmitter<Coche>();
+  @Output() vender = new EventEmitter<string | number | null>();
 
   constructor() { }
 

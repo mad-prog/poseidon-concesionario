@@ -16,7 +16,7 @@
             <div>
                 <p><span class="label">Está vendido</span> <i class="fas" [ngClass]="coche.vendido ? 'fa-lock' : 'fa-lock-open'"></i></p>
                 <p><span class="label">Está en oferta:</span>{{coche.oferta}}</p>
-                <p> <i class="option far fa-money-bill-alt" title="Vender Coche" *ngIf="!coche.vendido" (click)="vender.emit(coche)"></i></p>
+                <p> <i class="option far fa-money-bill-alt" title="Vender Coche" *ngIf="!coche.vendido" (click)="vender.emit(coche.id)"></i></p>
             </div>
         </div>
     </div>
