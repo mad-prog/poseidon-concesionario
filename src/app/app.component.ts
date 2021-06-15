@@ -102,7 +102,6 @@ export class AppComponent implements OnInit {
     })
   }
 
-
   showCoche(coche: Coche): void {
     console.log(coche);
     alert(coche.marca);
@@ -116,5 +115,9 @@ export class AppComponent implements OnInit {
     // }
 
     this.mostrarTarjetas = !this.mostrarTarjetas;
+  }
+
+  vender(coche: Coche): void {
+    coche.vendido = true;
   }
 }

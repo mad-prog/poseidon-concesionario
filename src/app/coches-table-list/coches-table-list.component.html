@@ -32,9 +32,11 @@
                 <td class="center">
                     <i class="fas" [ngClass]="coche.vendido ? 'fa-lock' : 'fa-lock-open'"></i>
                 </td>
-                <td><button *ngIf="coche.vendido === false" (click)="infoClick(coche)">Mostrar Info</button></td>
+                <td>
+                    <i class="far fa-money-bill-alt" title="Vender Coche" *ngIf="!coche.vendido" (click)="venderCoche(coche)"></i>
+                    <button *ngIf="coche.vendido === false" (click)="infoClick(coche)">Mostrar Info</button>
+                </td>
             </tr>
         </ng-container>
     </table>
 </div>
-

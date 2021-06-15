@@ -10,6 +10,7 @@ export class CochesTableListComponent implements OnInit {
 
   @Input() coches: Coche[] = [];
   @Output() show = new EventEmitter<Coche>();
+  @Output() vender = new EventEmitter<Coche>();
 
   constructor() {
 
@@ -22,4 +23,7 @@ export class CochesTableListComponent implements OnInit {
     this.show.emit(infoCoche);
   }
 
+  venderCoche(coche: Coche): void {
+    this.vender.emit(coche);
+  }
 }

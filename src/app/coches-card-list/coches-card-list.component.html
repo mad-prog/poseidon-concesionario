@@ -2,14 +2,22 @@
     <h1>
         Listado de Coches (Tarjetas)
     </h1>
-    <div class="card" *ngFor="let coche of coches">
+    <div class="card" *ngFor="let coche of coches; let idx = index">
         <div class="card-header">
-            {{ coche.marca}} - {{coche.modelo}}
+            <p>{{ coche.marca}} - {{coche.modelo}}</p>
+            <h2>{{idx + 1}}</h2>
         </div>
         <div class="card-content">
-            <p><strong>Numero de puertas:</strong>{{coche.puertas}}</p>
-            <p><strong>Potencia:</strong>{{coche.potencia}}</p>
-            <p><strong>Tipo de coche:</strong>{{coche.tipoDeCoche}}</p>
+            <div>
+                <p><span class="label">Numero de puertas:</span>{{coche.puertas}}</p>
+                <p><span class="label">Potencia:</span>{{coche.potencia}}</p>
+                <p><span class="label">Tipo de coche:</span>{{coche.tipoDeCoche}}</p>
+            </div>
+            <div>
+                <p><span class="label">Está vendido</span> <i class="fas" [ngClass]="coche.vendido ? 'fa-lock' : 'fa-lock-open'"></i></p>
+                <p><span class="label">Está en oferta:</span>{{coche.oferta}}</p>
+                <p> <i class="option far fa-money-bill-alt" title="Vender Coche" *ngIf="!coche.vendido" (click)="vender.emit(coche)"></i></p>
+            </div>
         </div>
     </div>
 </div>
