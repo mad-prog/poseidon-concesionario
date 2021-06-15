@@ -117,7 +117,7 @@ export class AppComponent implements OnInit {
     this.mostrarTarjetas = !this.mostrarTarjetas;
   }
 
-  vender(cocheId: string): void {
+  vender(cocheId: string | number | null): void {
     
   }
 }
