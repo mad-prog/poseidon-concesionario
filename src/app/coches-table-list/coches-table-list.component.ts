@@ -14,7 +14,7 @@ export class CochesTableListComponent implements OnInit, OnChanges {
   @Output() show = new EventEmitter<Coche>();
   @Output() vender = new EventEmitter<string | number | null>();
 
-  constructor() {
+  constructor() {   
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -7,6 +7,7 @@ import { SwitchSiNoComponent } from './switch-si-no/switch-si-no.component';
 import { CochesCardListComponent } from './coches-card-list/coches-card-list.component';
 import { CochesListComponent } from './coches-list/coches-list.component';
 import { CochesFilterComponent } from './coches-filter/coches-filter.component';
+import { HighLightDirective } from './high-light.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CochesFilterComponent } from './coches-filter/coches-filter.component';
     SwitchSiNoComponent,
     CochesCardListComponent,
     CochesListComponent,
-    CochesFilterComponent
+    CochesFilterComponent,
+    HighLightDirective
   ],
   imports: [
     BrowserModule
