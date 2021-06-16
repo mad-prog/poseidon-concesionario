@@ -1,7 +1,10 @@
+
+
+
 <app-coches-filter (soloDisponibles)="filtrarSoloDisponibles()" (soloEnOferta)="filtrarSoloEnOferta()" (todos)="mostrarTodos()">
 </app-coches-filter>
 
-<div class="button-actions">
+<div class="button-actions" appHoverSpan>
     <button (click)="cambiarVistaClick()">Cambiar vista</button>
     <button (click)="soldOut()">Sold out</button>
     <button (click)="reset()">Restablecer</button>

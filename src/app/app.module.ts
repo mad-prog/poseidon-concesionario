@@ -8,6 +8,7 @@ import { CochesCardListComponent } from './coches-card-list/coches-card-list.com
 import { CochesListComponent } from './coches-list/coches-list.component';
 import { CochesFilterComponent } from './coches-filter/coches-filter.component';
 import { HighLightDirective } from './high-light.directive';
+import { HoverSpanDirective } from './hover-span.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HighLightDirective } from './high-light.directive';
     CochesCardListComponent,
     CochesListComponent,
     CochesFilterComponent,
-    HighLightDirective
+    HighLightDirective,
+    HoverSpanDirective
   ],
   imports: [
     BrowserModule
