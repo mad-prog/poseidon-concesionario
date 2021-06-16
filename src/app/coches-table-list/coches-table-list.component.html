@@ -29,8 +29,8 @@
                 <td class="center">
                     <app-switch-si-no [valor]="coche.visible"></app-switch-si-no>
                 </td>
-                <td class="center">
-                    <i class="fas" [ngClass]="coche.vendido ? 'fa-lock' : 'fa-lock-open'"></i>
+                <td class="center" appCocheDisponibleStatus [noDisponible]="coche.vendido">
+                  
                 </td>
                 <td>
                     <i class="far fa-money-bill-alt" title="Vender Coche" *ngIf="!coche.vendido" (click)="venderCoche(coche)"></i>

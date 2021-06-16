@@ -9,6 +9,7 @@ import { CochesListComponent } from './coches-list/coches-list.component';
 import { CochesFilterComponent } from './coches-filter/coches-filter.component';
 import { HighLightDirective } from './high-light.directive';
 import { HoverSpanDirective } from './hover-span.directive';
+import { CocheDisponibleStatusDirective } from './coche-disponible-status.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HoverSpanDirective } from './hover-span.directive';
     CochesListComponent,
     CochesFilterComponent,
     HighLightDirective,
-    HoverSpanDirective
+    HoverSpanDirective,
+    CocheDisponibleStatusDirective
   ],
   imports: [
     BrowserModule
