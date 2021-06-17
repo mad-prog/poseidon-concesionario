@@ -1,7 +1,8 @@
-<div [appMiSelect]="chochesSelectOptions" class="mi-select">
+<div [appMiSelect]="chochesSelectOptions" class="mi-select" (selectionChange)="marcaSelectionChange($event)">
 
 </div>
 
+{{marcaSelected}}
 
 <!-- <app-coches-filter (soloDisponibles)="filtrarSoloDisponibles()" (soloEnOferta)="filtrarSoloEnOferta()" (todos)="mostrarTodos()">
 </app-coches-filter>

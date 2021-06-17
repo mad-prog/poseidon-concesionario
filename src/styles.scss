@@ -19,6 +19,12 @@
     cursor: pointer;
     position: relative;
 
+    i {
+        right: 5px;
+        position: absolute;
+        top: -5px;
+    }
+
     .select-container {
         display: block;
         top: 20px;

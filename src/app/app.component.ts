@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   cochesBackup: Coche[] = [];
 
   chochesSelectOptions: string[] = [];
+  marcaSelected: string = '';
 
   ngOnInit(): void {
 
@@ -105,7 +106,7 @@ export class AppComponent implements OnInit {
     })
 
     this.chochesSelectOptions = this.coches.map(x => x.marca);
-    
+
     this.cochesBackup = [...this.coches];
   }
 
@@ -187,5 +188,9 @@ export class AppComponent implements OnInit {
 
   reset() {
     this.coches = [...this.cochesBackup];
+  }
+
+  marcaSelectionChange(value: string) {
+    this.marcaSelected = value;
   }
 }

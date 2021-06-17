@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appMiSelect]'
@@ -6,21 +6,22 @@ import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@
 export class MiSelectDirective implements OnInit {
 
   @Input() appMiSelect: string[] = [];
+  @Output() selectionChange = new EventEmitter<string>();
 
   open: boolean = false;
   paragraph?: HTMLParagraphElement;
+  icon?: HTMLElement;
+  valueSelected: string = '';
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    this.paragraph = this.renderer.createElement('p');
-    this.renderer.setProperty(this.paragraph, 'textContent', this.appMiSelect[0]);
-    this.renderer.appendChild(this.el.nativeElement, this.paragraph);
+    this.createAndAppendParagraph();
+    this.createAndAppendIcon();
   }
 
   @HostListener('click')
   onClick(): void {
-
     const select = this.el.nativeElement.querySelector('.select-container');
 
     if (!select) {
@@ -57,15 +58,57 @@ export class MiSelectDirective implements OnInit {
       li.textContent = option;
 
       this.renderer.listen(li, 'click', (event: Event) => {
-        this.renderer.setProperty(this.paragraph, 'textContent', option);
+        this.selectValue(option);
         this.closeSelect(div);
+       
         event.stopPropagation();
       });
+
       this.renderer.appendChild(ul, li);
     });
 
     this.renderer.appendChild(div, ul);
     this.renderer.appendChild(this.el.nativeElement, div);
+  }
+
+  private selectValue(value: string): void {
+    this.valueSelected = value;
+    this.renderer.setProperty(this.paragraph, 'textContent', value);
+    this.toogleIcon()
+    this.selectionChange.emit(value);
+  }
+
+  private toogleIcon() {
+    if (this.valueSelected) {
+      this.renderer.removeClass(this.icon, 'fa-sort-down');
+      this.renderer.addClass(this.icon, 'fa-times');
+    } else {
+      this.renderer.removeClass(this.icon, 'fa-times');
+      this.renderer.addClass(this.icon, 'fa-sort-down');
+    }
+  }
+
+  private createAndAppendIcon() {
+    this.icon = this.renderer.createElement('i');
+    if (this.icon) {
+      this.renderer.addClass(this.icon, 'fas');
+      this.renderer.addClass(this.icon, 'fa-sort-down');
+
+      this.renderer.listen(this.icon, 'click', (event: Event) => {
+        if (this.icon?.classList.contains('fa-times')) {
+          this.selectValue('');
+          event.stopPropagation();
+        }
+      });
+
+      this.renderer.appendChild(this.el.nativeElement, this.icon);
+    }
+  }
+
+  private createAndAppendParagraph() {
+    this.paragraph = this.renderer.createElement('p');
+    this.renderer.setProperty(this.paragraph, 'textContent', '');
+    this.renderer.appendChild(this.el.nativeElement, this.paragraph);
   }
 }
 
