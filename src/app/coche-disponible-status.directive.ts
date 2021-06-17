@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleChanges } from '@angular/core';
 
 @Directive({
   selector: '[appCocheDisponibleStatus]'
@@ -6,6 +6,7 @@ import { Directive, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } fro
 export class CocheDisponibleStatusDirective implements OnChanges {
 
   @Input() noDisponible?: boolean;
+  @Output() vender = new EventEmitter();
 
   icon?: HTMLElement;
 
@@ -28,6 +29,10 @@ export class CocheDisponibleStatusDirective implements OnChanges {
     this.icon = this.renderer.createElement('i');
     if (this.icon) {
       this.renderer.addClass(this.icon, 'fas');
+
+      this.renderer.listen(this.icon, 'click', () => {
+       this.vender.emit();
+      });
     }
   }
 }
