@@ -11,3 +11,32 @@
 //         background-color: darken($color: cadetblue, $amount: 10%);
 //     }
 // }
+
+.mi-select {
+    width: 200px;
+    height: 20px;
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+    position: relative;
+
+    .select-container {
+        display: block;
+        top: 20px;
+        position: absolute;
+        width: 100%;
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            li {
+                padding-left: 5px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+
+                &:hover {
+                    background-color: lawngreen;
+                }
+            }
+        }
+    }
+}

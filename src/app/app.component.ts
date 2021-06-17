@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
   coches: Coche[] = [];
   cochesBackup: Coche[] = [];
 
+  chochesSelectOptions: string[] = [];
+
   ngOnInit(): void {
 
     let id = 0;
@@ -102,6 +104,8 @@ export class AppComponent implements OnInit {
       color: 'orange'
     })
 
+    this.chochesSelectOptions = this.coches.map(x => x.marca);
+    
     this.cochesBackup = [...this.coches];
   }
 
