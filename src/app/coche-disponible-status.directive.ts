@@ -19,6 +19,8 @@ export class CocheDisponibleStatusDirective implements OnChanges {
     }
 
     if (this.icon && changes.noDisponible) {
+      this.renderer.removeClass(this.icon, 'fa-lock');
+      this.renderer.removeClass(this.icon, 'fa-lock-open');
       const css = changes.noDisponible.currentValue ? 'fa-lock' : 'fa-lock-open';
       this.renderer.addClass(this.icon, css);
       this.renderer.appendChild(this.el.nativeElement, this.icon);      

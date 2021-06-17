@@ -29,7 +29,7 @@
                 <td class="center">
                     <app-switch-si-no [valor]="coche.visible"></app-switch-si-no>
                 </td>
-                <td class="center" appCocheDisponibleStatus [noDisponible]="coche.vendido">
+                <td class="center" appCocheDisponibleStatus [noDisponible]="coche.vendido" (vender)="venderCoche(coche)">
                   
                 </td>
                 <td>

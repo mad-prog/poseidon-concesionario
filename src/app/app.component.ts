@@ -138,7 +138,7 @@ export class AppComponent implements OnInit {
     if (fIndex >= 0) {
       this.coches[fIndex].vendido = true;
     }
-
+    this.coches = [...this.coches];
     // map
     // this.coches.map(coche => {
     //    if (coche.id === cocheId){

@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { Coche } from '../models/coche';
-
 @Component({
   selector: 'app-coches-table-list',
   templateUrl: './coches-table-list.component.html',
@@ -14,11 +12,13 @@ export class CochesTableListComponent implements OnInit, OnChanges {
   @Output() show = new EventEmitter<Coche>();
   @Output() vender = new EventEmitter<string | number | null>();
 
-  constructor() {   
+  constructor() {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
     if (changes.coches) {
+
       this.coches = changes.coches.currentValue.map((x: Coche) => ({ ...x }));
     }
   }
@@ -28,7 +28,6 @@ export class CochesTableListComponent implements OnInit, OnChanges {
 
   infoClick(infoCoche: Coche): void {
     this.show.emit(infoCoche);
-    infoCoche.marca = 'SEAT';
   }
 
   venderCoche(coche: Coche): void {
