@@ -67,6 +67,8 @@ export class MiSelectDirective implements OnInit {
       this.renderer.appendChild(ul, li);
     });
 
+    //this.openSelect(div);
+
     this.renderer.appendChild(div, ul);
     this.renderer.appendChild(this.el.nativeElement, div);
   }
