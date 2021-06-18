@@ -1,0 +1,15 @@
+<h1>Formulario Reactivo FormBuilder</h1>
+<form [formGroup]="cocheForm" (ngSubmit)="enviar(cocheForm)">
+    <input type="text" formControlName="marca" [ngClass]="{error:  cocheForm.controls.marca.touched && cocheForm.controls.marca.invalid}">
+    <input type="text" formControlName="modelo">
+    <input type="text" formControlName="potencia">
+
+    <button [disabled]="cocheForm.invalid">Enviar</button>
+    <button type="button" (click)="setData()">Rellenar Formulario</button>
+    <p *ngIf="cocheForm.controls.marca.touched && cocheForm.controls.marca.hasError('required')" class="error">
+        El campo marca es obligatorio
+    </p>
+    <p *ngIf="cocheForm.controls.marca.touched && cocheForm.controls.marca.invalid" class="error">
+        El campo marca no es correcto
+    </p>
+</form>

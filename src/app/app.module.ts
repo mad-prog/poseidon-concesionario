@@ -11,6 +11,10 @@ import { HighLightDirective } from './high-light.directive';
 import { HoverSpanDirective } from './hover-span.directive';
 import { CocheDisponibleStatusDirective } from './coche-disponible-status.directive';
 import { MiSelectDirective } from './mi-select.directive';
+import { FormHtmlComponent } from './forms/form-html/form-html.component';
+import { FormCochesReactive1Component } from './forms/form-coches-reactive1/form-coches-reactive1.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormCochesReactive2Component } from './forms/form-coches-reactive2/form-coches-reactive2.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +27,14 @@ import { MiSelectDirective } from './mi-select.directive';
     HighLightDirective,
     HoverSpanDirective,
     CocheDisponibleStatusDirective,
-    MiSelectDirective
+    MiSelectDirective,
+    FormHtmlComponent,
+    FormCochesReactive1Component,
+    FormCochesReactive2Component
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

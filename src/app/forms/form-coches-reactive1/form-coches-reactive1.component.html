@@ -1,0 +1,8 @@
+<h1>Formulario Reactivo FormGroup</h1>
+<form [formGroup]="cocheForm" (ngSubmit)="enviar(cocheForm)">
+    <input type="text" formControlName="marca">
+    <input type="text" formControlName="modelo">
+    <input type="text" formControlName="potencia">
+
+    <button>Enviar</button>
+</form>
