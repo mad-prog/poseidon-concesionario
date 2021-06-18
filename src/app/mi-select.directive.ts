@@ -6,6 +6,7 @@ import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Outpu
 export class MiSelectDirective implements OnInit {
 
   @Input() appMiSelect: string[] = [];
+  @Input() placeHolder: string = 'Select an option...';
   @Output() selectionChange = new EventEmitter<string>();
 
   open: boolean = false;
@@ -59,8 +60,7 @@ export class MiSelectDirective implements OnInit {
 
       this.renderer.listen(li, 'click', (event: Event) => {
         this.selectValue(option);
-        this.closeSelect(div);
-       
+        this.closeSelect(div);       
         event.stopPropagation();
       });
 
@@ -74,8 +74,15 @@ export class MiSelectDirective implements OnInit {
   private selectValue(value: string): void {
     this.valueSelected = value;
     this.renderer.setProperty(this.paragraph, 'textContent', value);
-    this.toogleIcon()
+    this.toogleIcon();
     this.selectionChange.emit(value);
+  }
+
+  private resetControl(): void {
+    this.valueSelected = '';  
+    this.renderer.setProperty(this.paragraph, 'textContent', this.placeHolder);
+    this.toogleIcon();
+    this.selectionChange.emit('');
   }
 
   private toogleIcon() {
@@ -96,7 +103,7 @@ export class MiSelectDirective implements OnInit {
 
       this.renderer.listen(this.icon, 'click', (event: Event) => {
         if (this.icon?.classList.contains('fa-times')) {
-          this.selectValue('');
+          this.resetControl();
           event.stopPropagation();
         }
       });
@@ -107,7 +114,7 @@ export class MiSelectDirective implements OnInit {
 
   private createAndAppendParagraph() {
     this.paragraph = this.renderer.createElement('p');
-    this.renderer.setProperty(this.paragraph, 'textContent', '');
+    this.renderer.setProperty(this.paragraph, 'textContent', this.placeHolder);
     this.renderer.appendChild(this.el.nativeElement, this.paragraph);
   }
 }
