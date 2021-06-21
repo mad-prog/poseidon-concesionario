@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Coche } from '../models/coche';
 
@@ -10,6 +10,7 @@ import { Coche } from '../models/coche';
 export class CocheDetailComponent implements OnInit, OnChanges {
 
   @Input() coche?: Coche;
+  @Output() cocheEditado = new EventEmitter<Coche>();
 
   cocheForm: FormGroup;
 
@@ -37,7 +38,18 @@ export class CocheDetailComponent implements OnInit, OnChanges {
   }
 
   guardarClick(form: FormGroup): void {
+    const result: Coche = form.value;
 
+    if (this.coche) {
+      result.id = this.coche.id;
+    }
+
+    this.cocheEditado.emit(result);
   }
 
+
+  nuevoCoche(): void {
+    this.cocheForm.reset();
+
+  }
 }

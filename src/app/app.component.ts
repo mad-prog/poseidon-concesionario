@@ -113,4 +113,10 @@ export class AppComponent implements OnInit {
   marcaSelectionChange(value: string) {
     this.marcaSelected = value;
   }
+
+  guardarCoche(coche: Coche): void {
+    this.cochesModel.guardarCoche(coche);
+    this.coches = this.cochesModel.getCoches();
+
+  }
 }

@@ -88,6 +88,16 @@ export class CochesModelService {
   }
 
   getCoches(): Coche[] {
-    return this.coches;
+    return [...this.coches];
+  }
+
+  guardarCoche(coche: Coche): void {
+    if (coche) {
+      const idx = this.coches.findIndex(x => x.id === coche.id);
+
+      if (idx >= 0) {
+        this.coches[idx] = { ...coche };
+      }
+    }
   }
 }

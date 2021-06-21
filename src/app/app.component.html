@@ -2,4 +2,4 @@
 
 <!-- <app-coches-table-list [coches]="coches" (editar)="showCoche($event)"></app-coches-table-list> -->
 
-<app-coche-detail [coche]="cocheSeleccionado" ></app-coche-detail>
+<app-coche-detail [coche]="cocheSeleccionado" (cocheEditado)="guardarCoche($event)" ></app-coche-detail>

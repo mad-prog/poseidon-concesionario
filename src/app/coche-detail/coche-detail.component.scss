@@ -1,0 +1,28 @@
+.flex-row{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.field-element{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 200px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    label{
+        text-transform: uppercase;        
+    }
+
+    input{
+        border: none;
+        border-bottom: 1px solid gray;
+        height: 32px;
+        font-size: 1.1rem;
+        outline: none;
+
+        &:focus{           
+            border-bottom: 2px solid olivedrab;
+        }
+    }   
+}
