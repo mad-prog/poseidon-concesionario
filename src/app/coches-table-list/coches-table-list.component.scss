@@ -33,6 +33,12 @@ table {
         &.right {
             text-align: right;
         }
+
+        &.actions {
+            i {
+                margin-right: 15px;
+            }
+        }
     }
 
     &.center {

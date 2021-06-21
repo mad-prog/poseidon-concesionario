@@ -15,6 +15,8 @@ import { FormHtmlComponent } from './forms/form-html/form-html.component';
 import { FormCochesReactive1Component } from './forms/form-coches-reactive1/form-coches-reactive1.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormCochesReactive2Component } from './forms/form-coches-reactive2/form-coches-reactive2.component';
+import { CocheDetailComponent } from './coche-detail/coche-detail.component';
+import { CochesModelService } from './services/coches-model.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { FormCochesReactive2Component } from './forms/form-coches-reactive2/form
     MiSelectDirective,
     FormHtmlComponent,
     FormCochesReactive1Component,
-    FormCochesReactive2Component
+    FormCochesReactive2Component,
+    CocheDetailComponent
   ],
   imports: [
     BrowserModule,

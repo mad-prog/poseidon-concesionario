@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Coche } from '../models/coche';
 
 @Component({
@@ -8,10 +8,11 @@ import { Coche } from '../models/coche';
 })
 export class CochesListComponent {
 
-  mostrarTarjetas = true;
+  mostrarTarjetas = false;
   
   @Input() coches: Coche[] = [];
-
+  @Output() editar = new EventEmitter<Coche>();
+  
   showCoche(coche: Coche): void {
     console.log(coche);
     alert(coche.marca);

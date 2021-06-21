@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Coche } from './models/coche';
+import { CochesModelService } from './services/coches-model.service';
 
 @Component({
   selector: 'app-root',
@@ -14,96 +15,15 @@ export class AppComponent implements OnInit {
 
   chochesSelectOptions: string[] = [];
   marcaSelected: string = '';
+  cocheSeleccionado?: Coche;
+
+  constructor(private cochesModel: CochesModelService) {
+
+  }
 
   ngOnInit(): void {
 
-    let id = 0;
-
-    this.coches = [
-      {
-        id: id++,
-        marca: "Mercedes",
-        modelo: "CLS",
-        puertas: 3,
-        tipoDeCoche: "Coupe",
-        potencia: 260,
-        oferta: true,
-        visible: true,
-        vendido: false,
-        color: 'red'
-      },
-      {
-        id: id++,
-        marca: "Audi",
-        modelo: "A6",
-        puertas: 5,
-        tipoDeCoche: "Berlina",
-        potencia: 250,
-        oferta: true,
-        visible: true,
-        vendido: true,
-        color: 'blue'
-      },
-      {
-        id: id++,
-        marca: "Audi",
-        modelo: "A3",
-        puertas: 5,
-        tipoDeCoche: "Familiar",
-        potencia: 250,
-        oferta: true,
-        visible: true,
-        vendido: false,
-        color: 'green'
-      },
-      {
-        id: id++,
-        marca: "Citroën",
-        modelo: "Grand C4 Spacetourer",
-        puertas: 5,
-        tipoDeCoche: "Monovolumen",
-        potencia: 150,
-        oferta: true,
-        visible: true,
-        vendido: false,
-        color: 'yellow'
-      },
-      {
-        id: id++,
-        marca: "Mercedes",
-        modelo: "GLC",
-        puertas: 5,
-        tipoDeCoche: "SUV",
-        potencia: 258,
-        oferta: true,
-        visible: true,
-        vendido: false,
-        color: 'violet'
-      },
-      {
-        id: id++,
-        marca: "Porsche",
-        modelo: "Cayenne",
-        puertas: 5,
-        tipoDeCoche: "SUV",
-        potencia: 385,
-        oferta: false,
-        visible: true,
-        vendido: true,
-        color: 'grey'
-      }
-    ];
-
-    this.coches.push({
-      id: id++,
-      marca: "Mercedes",
-      modelo: "CLS",
-      puertas: 3,
-      tipoDeCoche: "Coupe",
-      potencia: 260,
-      vendido: false,
-      color: 'orange'
-    })
+    this.coches = this.cochesModel.getCoches();
 
     this.chochesSelectOptions = this.coches.map(x => x.marca);
 
@@ -111,7 +31,7 @@ export class AppComponent implements OnInit {
   }
 
   showCoche(coche: Coche): void {
-    alert(coche.marca);
+    this.cocheSeleccionado = coche;
   }
 
   cambiarVistaClick() {
