@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   chochesSelectOptions: string[] = [];
   marcaSelected: string = '';
-  cocheSeleccionado?: Coche;
+  cocheSeleccionado: Coche | null = null;
 
   constructor(private cochesModel: CochesModelService) {
 
@@ -114,9 +114,8 @@ export class AppComponent implements OnInit {
     this.marcaSelected = value;
   }
 
-  guardarCoche(coche: Coche): void {
-    this.cochesModel.guardarCoche(coche);
-    this.coches = this.cochesModel.getCoches();
-
+  guardarCoche(coche: Coche): void {   
+    this.cocheSeleccionado =  this.cochesModel.guardarCoche(coche);
+    this.coches = this.cochesModel.getCoches();    
   }
 }

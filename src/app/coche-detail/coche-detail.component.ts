@@ -9,7 +9,7 @@ import { Coche } from '../models/coche';
 })
 export class CocheDetailComponent implements OnInit, OnChanges {
 
-  @Input() coche?: Coche;
+  @Input() cocheSeleccionado: Coche | null = null;
   @Output() cocheEditado = new EventEmitter<Coche>();
 
   cocheForm: FormGroup;
@@ -29,8 +29,9 @@ export class CocheDetailComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.coche) {
-      this.cocheForm.patchValue(changes.coche.currentValue);
+    if (changes.cocheSeleccionado) {
+      console.log('(changes.cocheSeleccionado)');
+      this.cocheForm.patchValue(changes.cocheSeleccionado.currentValue);
     }
   }
 
@@ -38,18 +39,22 @@ export class CocheDetailComponent implements OnInit, OnChanges {
   }
 
   guardarClick(form: FormGroup): void {
-    const result: Coche = form.value;
 
-    if (this.coche) {
-      result.id = this.coche.id;
+    if (form.valid) {
+      const result: Coche = form.value;
+
+      if (this.cocheSeleccionado) {
+        result.id = this.cocheSeleccionado.id;
+      }
+
+      this.cocheEditado.emit(result);
     }
-
-    this.cocheEditado.emit(result);
   }
 
 
-  nuevoCoche(): void {
+  nuevoCocheClick(): void {
     this.cocheForm.reset();
 
+    this.cocheSeleccionado = null;
   }
 }

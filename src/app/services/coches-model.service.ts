@@ -7,13 +7,13 @@ import { Coche } from '../models/coche';
 export class CochesModelService {
 
   private coches: Coche[] = [];
-
+  private id = 0;
   constructor() {
-    let id = 0;
+
 
     this.coches = [
       {
-        id: id++,
+        id: this.id++,
         marca: "Mercedes",
         modelo: "CLS",
         puertas: 3,
@@ -25,7 +25,7 @@ export class CochesModelService {
         color: '#a4a4a4'
       },
       {
-        id: id++,
+        id: this.id++,
         marca: "Audi",
         modelo: "A6",
         puertas: 5,
@@ -37,7 +37,7 @@ export class CochesModelService {
         color: 'blue'
       },
       {
-        id: id++,
+        id: this.id++,
         marca: "Audi",
         modelo: "A3",
         puertas: 5,
@@ -49,7 +49,7 @@ export class CochesModelService {
         color: 'green'
       },
       {
-        id: id++,
+        id: this.id++,
         marca: "Citroën",
         modelo: "Grand C4 Spacetourer",
         puertas: 5,
@@ -61,7 +61,7 @@ export class CochesModelService {
         color: 'yellow'
       },
       {
-        id: id++,
+        id: this.id++,
         marca: "Mercedes",
         modelo: "GLC",
         puertas: 5,
@@ -73,7 +73,7 @@ export class CochesModelService {
         color: 'violet'
       },
       {
-        id: id++,
+        id: this.id++,
         marca: "Porsche",
         modelo: "Cayenne",
         puertas: 5,
@@ -91,13 +91,29 @@ export class CochesModelService {
     return [...this.coches];
   }
 
-  guardarCoche(coche: Coche): void {
+  guardarCoche(coche: Coche): Coche | null {
+
     if (coche) {
       const idx = this.coches.findIndex(x => x.id === coche.id);
 
       if (idx >= 0) {
         this.coches[idx] = { ...coche };
+        return { ...this.coches[idx] };
+      } else {
+        const result: Coche = { ...coche, id: this.id++ };
+        this.coches.push(result);
+        return { ...result };
       }
     }
+
+    return null;
   }
+
+  getCocheById(id: number): Coche | undefined {
+    return this.coches.find(x => x.id === id);
+  }
+
+  private random(min: number = 1, max: number = 100000): number {
+    return Math.floor(Math.random() * (max - min)) + min
+  };
 }
