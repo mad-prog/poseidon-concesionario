@@ -16,7 +16,7 @@
             <th></th>
         </thead>
         <ng-container *ngFor="let coche of coches; let idx = index;">
-            <tr [ngClass]="{'en-oferta': coche.oferta}" appHighLight >
+            <tr [ngClass]="{'en-oferta': coche.oferta}" [appHighLight]="'#3f51b52a'" >
                 <td>{{idx + 1}}</td>
                 <td [style.color]="coche.color">{{coche.marca}}</td>
                 <td [ngStyle]="{color: coche.color ? coche.color: 'white'}">{{coche.modelo}}</td>

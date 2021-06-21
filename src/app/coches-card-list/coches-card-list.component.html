@@ -2,21 +2,26 @@
     <h1>
         Listado de Coches (Tarjetas)
     </h1>
-    <div class="card" *ngFor="let coche of coches; let idx = index">
-        <div class="card-header">
-            <p>{{ coche.marca}} - {{coche.modelo}}</p>
-            <h2>{{idx + 1}}</h2>
-        </div>
-        <div class="card-content">
-            <div>
-                <p><span class="label">Numero de puertas:</span>{{coche.puertas}}</p>
-                <p><span class="label">Potencia:</span>{{coche.potencia}}</p>
-                <p><span class="label">Tipo de coche:</span>{{coche.tipoDeCoche}}</p>
+
+    <div class="cards-container">
+        <div class="card" *ngFor="let coche of coches; let idx = index">
+            <div class="card-header">
+                <p>{{ coche.marca}} - {{coche.modelo}}</p>
+                <h2>{{idx + 1}}</h2>
             </div>
-            <div>
-                <p appCocheDisponibleStatus (vender)="vender.emit(coche.id)" [noDisponible]="coche.vendido"><span class="label">Está vendido</span></p>
-                <p><span class="label">Está en oferta:</span>{{coche.oferta}}</p>
-                <p> <i class="option far fa-money-bill-alt" title="Vender Coche" *ngIf="!coche.vendido" (click)="vender.emit(coche.id)"></i></p>
+            <div class="card-content">
+                <div>
+                    <p><span class="label">Numero de puertas:</span>{{coche.puertas}}</p>
+                    <p><span class="label">Potencia:</span>{{coche.potencia}}</p>
+                    <p><span class="label">Tipo de coche:</span>{{coche.tipoDeCoche}}</p>
+                </div>
+                <div>
+                    <p appCocheDisponibleStatus (vender)="vender.emit(coche.id)" [noDisponible]="coche.vendido"><span class="label">Está
+                            vendido</span></p>
+                    <p><span class="label">Está en oferta:</span>{{coche.oferta}}</p>
+                    <p> <i class="option far fa-money-bill-alt" title="Vender Coche" *ngIf="!coche.vendido"
+                            (click)="vender.emit(coche.id)"></i></p>
+                </div>
             </div>
         </div>
     </div>

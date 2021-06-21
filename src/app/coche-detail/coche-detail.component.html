@@ -1,53 +1,55 @@
-<h1>Edicion de Coches</h1>
-
 <form [formGroup]="cocheForm" (ngSubmit)="guardarClick(cocheForm)">
-
-    <div class="flex-row">
-        <div class="field-element">
-            <label for="">Marca: </label>
-            <input id="" type="text" formControlName="marca">
+    <fieldset>
+        <legend>
+            <h1> Edicion de Coches</h1>
+        </legend>
+        <div class="flex-row">
+            <div class="field-element">
+                <label for="">Marca: </label>
+                <input id="" type="text" formControlName="marca">
+            </div>
+            <div class="field-element">
+                <label for="">Modelo: </label>
+                <input id="" type="text" formControlName="modelo">
+            </div>
+            <div class="field-element">
+                <label for="">Puertas: </label>
+                <input id="" type="number" formControlName="puertas">
+            </div>
+            <div class="field-element">
+                <label for="">Potencia: </label>
+                <input id="" type="number" formControlName="potencia">
+            </div>
+            <div class="field-element">
+                <label for="">Tipo de coche: </label>
+                <select id="" formControlName="tipoDeCoche">
+                    <option value="1">Deportivo</option>
+                    <option value="2">Coupé</option>
+                    <option value="3">Monovolumen</option>
+                    <option value="4">Sub</option>
+                    <option value="5">Familiar</option>
+                </select>
+            </div>
+            <div class="field-element">
+                <label for="">Color: </label>
+                <input id="" type="color" formControlName="color">
+            </div>
+            <div class="field-element">
+                <label for="">Oferta: </label>
+                <input id="" type="checkbox" formControlName="oferta">
+            </div>
+            <div class="field-element">
+                <label for="">Visible: </label>
+                <input id="" type="checkbox" formControlName="visible">
+            </div>
+            <div class="field-element">
+                <label for="">Vendido: </label>
+                <input id="" type="checkbox" formControlName="vendido">
+            </div>
         </div>
-        <div class="field-element">
-            <label for="">Modelo: </label>
-            <input id="" type="text" formControlName="modelo">
-        </div>
-        <div class="field-element">
-            <label for="">Puertas: </label>
-            <input id="" type="number" formControlName="puertas">
-        </div>
-        <div class="field-element">
-            <label for="">Potencia: </label>
-            <input id="" type="number" formControlName="potencia">
-        </div>
-        <div class="field-element">
-            <label for="">Tipo de coche: </label>
-            <select id="" formControlName="tipoDeCoche">
-                <option value="1">Deportivo</option>
-                <option value="2">Coupé</option>
-                <option value="3">Monovolumen</option>
-                <option value="4">Sub</option>
-                <option value="5">Familiar</option>
-            </select>
-        </div>
-        <div class="field-element">
-            <label for="">Color: </label>
-            <input id="" type="color" formControlName="color">
-        </div>
-        <div class="field-element">
-            <label for="">Oferta: </label>
-            <input id="" type="checkbox" formControlName="oferta">
-        </div>
-        <div class="field-element">
-            <label for="">Visible: </label>
-            <input id="" type="checkbox" formControlName="visible">
-        </div>
-        <div class="field-element">
-            <label for="">Vendido: </label>
-            <input id="" type="checkbox" formControlName="vendido">
-        </div>
-    </div>
-
-    <div>
-        <button type="submit">Guardar</button>
+    </fieldset>
+    <div class="row-buttons">
+        <button class="btn primary" type="submit">Guardar</button>
+        <button class="btn " type="button">Nuevo Coche</button>
     </div>
 </form>

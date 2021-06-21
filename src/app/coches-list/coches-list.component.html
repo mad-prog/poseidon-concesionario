@@ -1,4 +1,7 @@
-<button (click)="cambiarVistaClick()" >Cambiar vista</button>
+<div class="row-buttons">
+    <button class="btn primary" (click)="cambiarVistaClick()">Cambiar vista</button>
+</div>
+
 
 <app-coches-card-list [coches]="coches" *ngIf="mostrarTarjetas; else mostrarGrid"></app-coches-card-list>
 
