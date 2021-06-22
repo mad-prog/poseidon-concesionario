@@ -10,9 +10,6 @@ import { CochesModelService } from './services/coches-model.service';
 export class AppComponent implements OnInit {
   mostrarTarjetas = true;
   coches: Coche[] = [];
-  cochesBackup: Coche[] = [];
-
-  chochesSelectOptions: string[] = [];
   marcaSelected: string = '';
   cocheSeleccionado: Coche | null = null;
 
@@ -21,9 +18,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.coches = this.cochesModel.getCoches();
 
-    this.chochesSelectOptions = this.coches.map((x) => x.marca);
-
-    this.cochesBackup = [...this.coches];
+    this.cochesSelectOptions = this.coches.map((x) => x.marca);
   }
 
   showCoche(coche: Coche): void {
@@ -106,9 +101,14 @@ export class AppComponent implements OnInit {
     this.coches = [...this.cochesBackup];
   }
 
-  marcaSelectionChange(value: string) {
-    this.marcaSelected = value;
+  vender(id: string | number) {
+    this.cochesModel.vender(id);
+    this.coches = this.cochesModel.getCoches();
   }
+  // de la directiva mi-select
+  // marcaSelectionChange(value: string) {
+  //   this.marcaSelected = value;
+  // }
 
   guardarCoche(coche: Coche): void {
     this.cocheSeleccionado = this.cochesModel.guardarCoche(coche);

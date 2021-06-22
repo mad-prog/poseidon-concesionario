@@ -8,6 +8,10 @@
 </app-coches-card-list>
 
 <ng-template #mostrarGrid>
+<<<<<<< HEAD
     <app-coches-table-list [coches]="coches" (vender)="vender.emit($event)" (editar)="editar.emit($event)">
     </app-coches-table-list>
+=======
+    <app-coches-table-list [coches]="coches" (editar)="editar.emit($event)" (vender)="vender.emit($event)"></app-coches-table-list>
+>>>>>>> 74c323a880c162348fea9c9ecd74c24148635ed9
 </ng-template>

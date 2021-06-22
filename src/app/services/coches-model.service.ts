@@ -88,21 +88,6 @@ export class CochesModelService {
     return [...this.coches];
   }
 
-  getSoloDisponibles(): Coche[] {
-    return (this.coches = this.coches.filter(
-      (coche) => coche.vendido === false
-    ));
-  }
-
-  getSoloOfertas(): Coche[] {
-    return (this.coches = this.coches.filter((coche) => coche.oferta === true));
-  }
-
-  getTodos(): Coche[] {
-    return (this.coches = [...this.coches]);
-    //not just a copy. a new array
-  }
-
   guardarCoche(coche: Coche): Coche | null {
     if (coche) {
       const idx = this.coches.findIndex((x) => x.id === coche.id);
