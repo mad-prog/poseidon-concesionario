@@ -7,9 +7,8 @@ import { Coche } from '../models/coche';
 export class CochesModelService {
 
   private coches: Coche[] = [];
-  private id = 0;
+  private id = 1;
   constructor() {
-
 
     this.coches = [
       {
@@ -109,8 +108,70 @@ export class CochesModelService {
     return null;
   }
 
-  getCocheById(id: number): Coche | undefined {
-    return this.coches.find(x => x.id === id);
+  getCocheById(cocheId: string | number | null): Coche | undefined {
+    return this.coches.find(x => x.id === cocheId);
+  }
+
+  getSoloDisponibles(): Coche[] {
+    return this.coches.filter(x => x.vendido === false);
+  }
+
+  getSoloEnOferta(): Coche[] {
+    return this.coches.filter(x => x.oferta);
+  }
+
+  soldOut(): Coche[] {
+    return this.coches.map(oldCoche => {
+      const newCoche = { ...oldCoche, vendido: true };
+      return newCoche;
+    })
+  }
+
+  vender(cocheId: string | number | null): Coche | null {
+    //// filter
+    // const rFilter = this.coches.filter(coche => coche.id === cocheId);
+    // if (rFilter?.length) {
+    //   rFilter[0].vendido = true;
+    // }
+
+    // // find
+    // const rFind = this.coches.find(coche => coche.id === cocheId);
+    // if (rFind) {
+    //   rFind.vendido = true;
+    // }
+
+    // findIndex
+
+    if (cocheId) {
+
+      // const coche = this.getCocheById(cocheId);
+      // if (coche){
+      //   coche.vendido = true;
+      //   return this.guardarCoche(coche);
+      // }
+
+      const fIndex = this.coches.findIndex(coche => coche.id === cocheId);
+      if (fIndex >= 0) {
+        this.coches[fIndex].vendido = true;
+        return this.coches[fIndex];
+      }
+    }
+
+    return null;
+    // map
+    // this.coches.map(coche => {
+    //    if (coche.id === cocheId){
+    //      coche.vendido = true;
+    //    }  
+    // });
+
+    //  //forEach
+    //  this.coches.forEach(coche => {
+    //   if (coche.id === cocheId){
+    //     coche.vendido = true;
+    //   }
+    // })
+
   }
 
   private random(min: number = 1, max: number = 100000): number {

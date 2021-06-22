@@ -6,5 +6,5 @@
 <app-coches-card-list [coches]="coches" *ngIf="mostrarTarjetas; else mostrarGrid"></app-coches-card-list>
 
 <ng-template #mostrarGrid>
-    <app-coches-table-list [coches]="coches" (editar)="editar.emit($event)"></app-coches-table-list>
+    <app-coches-table-list [coches]="coches" (editar)="editar.emit($event)" (vender)="vender.emit($event)"></app-coches-table-list>
 </ng-template>

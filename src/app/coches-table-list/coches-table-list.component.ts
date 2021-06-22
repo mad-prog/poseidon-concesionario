@@ -10,7 +10,7 @@ export class CochesTableListComponent implements OnInit, OnChanges {
   @Input() coches: Coche[] = [];
 
   @Output() editar = new EventEmitter<Coche>();
-  @Output() vender = new EventEmitter<string | number | null>();
+  @Output() vender = new EventEmitter<string | number>();
 
   constructor() {
   }
@@ -31,6 +31,8 @@ export class CochesTableListComponent implements OnInit, OnChanges {
   }
 
   venderCoche(coche: Coche): void {
-    this.vender.emit(coche.id);
+    if (coche?.id) {
+      this.vender.emit(coche.id);
+    }
   }
 }

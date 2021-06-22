@@ -12,6 +12,7 @@ export class CochesListComponent {
   
   @Input() coches: Coche[] = [];
   @Output() editar = new EventEmitter<Coche>();
+  @Output() vender = new EventEmitter<number | string>();
   
   showCoche(coche: Coche): void {
     console.log(coche);
