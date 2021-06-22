@@ -17,8 +17,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.coches = this.cochesModel.getCoches();
-
-    this.cochesSelectOptions = this.coches.map((x) => x.marca);
   }
 
   showCoche(coche: Coche): void {
@@ -35,41 +33,6 @@ export class AppComponent implements OnInit {
     this.mostrarTarjetas = !this.mostrarTarjetas;
   }
 
-  vender(cocheId: string | number | null): void {
-    //// filter
-    // const rFilter = this.coches.filter(coche => coche.id === cocheId);
-    // if (rFilter?.length) {
-    //   rFilter[0].vendido = true;
-    // }
-
-    // // find
-    // const rFind = this.coches.find(coche => coche.id === cocheId);
-    // if (rFind) {
-    //   rFind.vendido = true;
-    // }
-
-    // findIndex
-
-    const fIndex = this.coches.findIndex((coche) => coche.id === cocheId);
-    if (fIndex >= 0) {
-      this.coches[fIndex].vendido = true;
-    }
-    this.coches = [...this.coches];
-    // map
-    // this.coches.map(coche => {
-    //    if (coche.id === cocheId){
-    //      coche.vendido = true;
-    //    }
-    // });
-
-    //  //forEach
-    //  this.coches.forEach(coche => {
-    //   if (coche.id === cocheId){
-    //     coche.vendido = true;
-    //   }
-    // })
-  }
-
   filtrarSoloDisponibles() {
     this.coches = this.cochesModel
       .getCoches()
@@ -77,7 +40,7 @@ export class AppComponent implements OnInit {
   }
 
   filtrarSoloEnOferta() {
-    this.coches = this.cochesBackup.filter((x) => x.oferta);
+    this.coches = this.cochesModel.filter((x) => x.oferta);
   }
 
   mostrarTodos() {
