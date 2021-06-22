@@ -5,10 +5,9 @@ import { CochesModelService } from './services/coches-model.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
   mostrarTarjetas = true;
   coches: Coche[] = [];
   cochesBackup: Coche[] = [];
@@ -17,15 +16,12 @@ export class AppComponent implements OnInit {
   marcaSelected: string = '';
   cocheSeleccionado: Coche | null = null;
 
-  constructor(private cochesModel: CochesModelService) {
-
-  }
+  constructor(private cochesModel: CochesModelService) {}
 
   ngOnInit(): void {
-
     this.coches = this.cochesModel.getCoches();
 
-    this.chochesSelectOptions = this.coches.map(x => x.marca);
+    this.chochesSelectOptions = this.coches.map((x) => x.marca);
 
     this.cochesBackup = [...this.coches];
   }
@@ -59,7 +55,7 @@ export class AppComponent implements OnInit {
 
     // findIndex
 
-    const fIndex = this.coches.findIndex(coche => coche.id === cocheId);
+    const fIndex = this.coches.findIndex((coche) => coche.id === cocheId);
     if (fIndex >= 0) {
       this.coches[fIndex].vendido = true;
     }
@@ -68,7 +64,7 @@ export class AppComponent implements OnInit {
     // this.coches.map(coche => {
     //    if (coche.id === cocheId){
     //      coche.vendido = true;
-    //    }  
+    //    }
     // });
 
     //  //forEach
@@ -77,15 +73,16 @@ export class AppComponent implements OnInit {
     //     coche.vendido = true;
     //   }
     // })
-
   }
 
   filtrarSoloDisponibles() {
-    this.coches = this.cochesBackup.filter(x => x.vendido === false);
+    this.coches = this.cochesModel
+      .getCoches()
+      .filter((x) => x.vendido === false);
   }
 
   filtrarSoloEnOferta() {
-    this.coches = this.cochesBackup.filter(x => x.oferta);
+    this.coches = this.cochesBackup.filter((x) => x.oferta);
   }
 
   mostrarTodos() {
@@ -97,13 +94,12 @@ export class AppComponent implements OnInit {
 
     // this.coches.forEach(x => x.vendido = true);
 
-    this.coches = this.cochesBackup.map(oldCoche => {
+    this.coches = this.cochesBackup.map((oldCoche) => {
       const newCoche = { ...oldCoche, vendido: true };
       return newCoche;
-    })
+    });
 
     // this.coches = this.cochesBackup.map(oldCoche => ({ ...oldCoche, vendido: true }));
-
   }
 
   reset() {
@@ -114,8 +110,8 @@ export class AppComponent implements OnInit {
     this.marcaSelected = value;
   }
 
-  guardarCoche(coche: Coche): void {   
-    this.cocheSeleccionado =  this.cochesModel.guardarCoche(coche);
-    this.coches = this.cochesModel.getCoches();    
+  guardarCoche(coche: Coche): void {
+    this.cocheSeleccionado = this.cochesModel.guardarCoche(coche);
+    this.coches = this.cochesModel.getCoches();
   }
 }

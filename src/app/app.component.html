@@ -1,5 +1,7 @@
-<app-coches-list [coches]="coches" (editar)="showCoche($event)"></app-coches-list>
+<app-coches-list [coches]="coches" (editar)="showCoche($event)" (vender)="vender($event)"></app-coches-list>
 
 <!-- <app-coches-table-list [coches]="coches" (editar)="showCoche($event)"></app-coches-table-list> -->
 
-<app-coche-detail [cocheSeleccionado]="cocheSeleccionado" (cocheEditado)="guardarCoche($event)" ></app-coche-detail>
+<app-coche-detail [cocheSeleccionado]="cocheSeleccionado" (cocheEditado)="guardarCoche($event)"></app-coche-detail>
+<app-coches-filter (soloDisponibles)="filtrarSoloDisponibles()" (soloEnOferta)="filtrarSoloEnOferta()"
+    (todos)="mostrarTodos()"></app-coches-filter>

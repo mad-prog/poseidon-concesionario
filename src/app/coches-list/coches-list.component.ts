@@ -4,15 +4,15 @@ import { Coche } from '../models/coche';
 @Component({
   selector: 'app-coches-list',
   templateUrl: './coches-list.component.html',
-  styleUrls: ['./coches-list.component.scss']
+  styleUrls: ['./coches-list.component.scss'],
 })
 export class CochesListComponent {
-
   mostrarTarjetas = false;
-  
+
   @Input() coches: Coche[] = [];
   @Output() editar = new EventEmitter<Coche>();
-  
+  @Output() vender = new EventEmitter<string | number | null>();
+
   showCoche(coche: Coche): void {
     console.log(coche);
     alert(coche.marca);
@@ -27,5 +27,4 @@ export class CochesListComponent {
 
     this.mostrarTarjetas = !this.mostrarTarjetas;
   }
-
 }

@@ -16,7 +16,7 @@
             <th></th>
         </thead>
         <ng-container *ngFor="let coche of coches; let idx = index;">
-            <tr [ngClass]="{'en-oferta': coche.oferta}" [appHighLight]="'#3f51b52a'" >
+            <tr [ngClass]="{'en-oferta': coche.oferta}" [appHighLight]="'#3f51b52a'">
                 <td>{{idx + 1}}</td>
                 <td [style.color]="coche.color">{{coche.marca}}</td>
                 <td [ngStyle]="{color: coche.color ? coche.color: 'white'}">{{coche.modelo}}</td>
@@ -29,12 +29,14 @@
                 <td class="center">
                     <app-switch-si-no [valor]="coche.visible"></app-switch-si-no>
                 </td>
-                <td class="center" appCocheDisponibleStatus [noDisponible]="coche.vendido" (vender)="venderCoche(coche)">
-                  
+                <td class="center" appCocheDisponibleStatus [noDisponible]="coche.vendido"
+                    (vender)="venderCoche(coche)">
+
                 </td>
                 <td class="actions">
-                    <i class="far fa-money-bill-alt" title="Vender Coche" *ngIf="!coche.vendido" (click)="venderCoche(coche)"></i>
-                    <i class="far fa-edit" title="Editar Coche" (click)="infoClick(coche)"></i>                    
+                    <i class="far fa-money-bill-alt" title="Vender Coche" *ngIf="!coche.vendido"
+                        (click)="vender.emit(coche.id)"></i>
+                    <i class="far fa-edit" title="Editar Coche" (click)="infoClick(coche)"></i>
                 </td>
             </tr>
         </ng-container>
